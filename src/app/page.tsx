@@ -1,6 +1,6 @@
 import { ArrowRight, HandCoins, Heart, Shield, Zap } from 'lucide-react';
-import { FeatureCard } from '@/components';
-import { Button } from "@/components/ui';
+import { FeatureCard } from '@/components/FeatureCard';
+import { Button } from "@/components/ui/button";
 
 
 export default function Home() {

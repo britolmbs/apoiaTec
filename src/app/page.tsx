@@ -1,4 +1,6 @@
-import { ArrowRight, HandCoins } from 'lucide-react';
+import { ArrowRight, HandCoins, Heart, Shield, Zap } from 'lucide-react';
+import { FeatureCard } from '@/components';
+import { Button } from "@/components/ui';
 
 
 export default function Home() {
@@ -28,19 +30,35 @@ export default function Home() {
               </p>
               <div className="pt-4">
                 <form>
-                  <button
+                  <Button
                   type='submit'
                   size='lg'
                   className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-8 h-12"
                   >
                     Começar Agora
                     <ArrowRight className='ml-12 h-4 w-4' />
-                  </button>
+                  </Button>
                 </form>
               </div>
             </div>
 
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+              <FeatureCard
+              icon={<Zap className="h-8 w-8 text-amber-600" />}
+              title="Rápido e Simples"
+              description="Configure sua página em minitos e começe a receber doações imediatamente."
+              />
+              <FeatureCard
+              icon={<Heart className="h-8 w-8 text-amber-600" />}
+              title="Conexão direta"
+              description="Crie uma conexão mais próxima com seus apoiadores através de mensagens personalizadas."
+              />
+
+              <FeatureCard
+              icon={<Shield className="h-8 w-8 text-amber-600" />}
+              title="Pagamento seguros"
+              description="Transações protegidas e transferências automáticas para sua conta bancária."
+              />
               
             </div>
           </div>

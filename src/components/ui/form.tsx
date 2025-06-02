@@ -58,7 +58,7 @@ const useFormField = () => {
         id,
         name: fieldContext.name,
         formItemId: `${id}-form-item`,
-        formDesciptionId: `${id}-form-item-description`,
+        formDescriptionId: `${id}-form-item-description`,
         formMessageId: `${id}-form-item-message`,
         ...fieldState,
     }
@@ -96,5 +96,67 @@ return (
     {...props}
     />
 )
+}
+
+function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+    const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+
+    return (
+        <Slot
+        data-slot="form-control"
+        id={formItemId}
+        arial-describedby={
+            !error
+            ?`${formDescriptionId}`
+            ?`${formDescriptionId} ${formMessageId}`
+        }
+        aria-invalid={!!error}
+        {...props}
+        />
+    )
+}
+
+function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
+    const { formDescriptionId } = useFormField()
+
+    return (
+        <p 
+        data-slot="form-description"
+        id={formDescriptionId}
+        className={cn("text-muted-foreground text-sm" , className)}
+        {...props}
+        />
+    )
+}
+
+function formMessage({ className, ...props }: React.ComponentProps<"p">) {
+    const { error, formMessageId } = useFormField()
+    const body = error ? String(error?.message ?? ""): props.children
+
+    if(!body) {
+        return null
+    }
+
+    return (
+        <p 
+        data-slot="form-message"
+        id={formMessageId}
+        className={cn("text-descructive text-sm", className)}
+        {...props}
+        >
+            {body}
+            </p>
+    )
+}
+
+export {
+    useFormField,
+    Form,
+    FormItem,
+    FormLabel,
+    FormControl,
+    FormDescription,
+    FormField,
+    formMessage
 }
 

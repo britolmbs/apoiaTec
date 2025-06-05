@@ -108,7 +108,7 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
         arial-describedby={
             !error
             ?`${formDescriptionId}`
-            ?`${formDescriptionId} ${formMessageId}`
+            :`${formDescriptionId} ${formMessageId}`
         }
         aria-invalid={!!error}
         {...props}

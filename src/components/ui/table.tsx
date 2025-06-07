@@ -17,7 +17,7 @@ function Table({ className, ...props }: React.ComponentProps<"table">) {
         </div>
     )
 }
-function TableHeader({ className, ...props }: React.ComponentProps<"thead"){
+function TableHeader({ className, ...props }: React.ComponentProps<"thead">){
     return(
         <thead
         data-slot="table-header"

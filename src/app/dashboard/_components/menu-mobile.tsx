@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { DialogTitle } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";

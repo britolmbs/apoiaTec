@@ -1,9 +1,24 @@
+"use client"
 import { Button } from "@/components/ui/button";
+import { createUsername } from "../_actions/create-username";
 
 export function UrlPreview(){
+
+    async function submitAction(formData: FormData) {
+        const username = formData.get("username") as string
+
+        if(username  === "") {
+            return;
+        }
+
+        const response = await createUsername ({ username })
+    }
+
     return (
         <div className="flex items-center flex-1 p-2 text-gray-100">
-        <form className="flex flex-1 flex-col  md:flew-row gap-4 items-start md:items-center">
+        <form className="flex flex-1 flex-col  md:flew-row gap-4 items-start md:items-center"
+        action={submitAction}
+        >
         <div className="flex items-center justify-center w-full">
              <p>
               {process.env.NEXT_PUBLIC_URL}/creator/

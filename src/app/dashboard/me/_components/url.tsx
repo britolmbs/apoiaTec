@@ -1,8 +1,12 @@
 "use client"
 import { Button } from "@/components/ui/button";
 import { createUsername } from "../_actions/create-username";
+import { useState } from "react";
+import { string } from "zod";
 
 export function UrlPreview(){
+
+    const [error, setError] = useState<null | string>(null)
 
     async function submitAction(formData: FormData) {
         const username = formData.get("username") as string
@@ -12,6 +16,10 @@ export function UrlPreview(){
         }
 
         const response = await createUsername ({ username })
+
+        if(response.error) {
+            setError(response.error)
+        }
     }
 
     return (
@@ -32,6 +40,7 @@ export function UrlPreview(){
         <Button type="submit"
         className="bg-blue-500 hover:bg-blue-600 h-9 w-full md:w-fit text-white px-4 rounded-md cursor-pointer"
         >Salvar</Button>
+        {error && <p className="text-red-500">{error}</p>}
         </form>
         </div>
     )

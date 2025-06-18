@@ -23,6 +23,7 @@ export function UrlPreview(){
     }
 
     return (
+        <div className="w-full">
         <div className="flex items-center flex-1 p-2 text-gray-100">
         <form className="flex flex-1 flex-col  md:flew-row gap-4 items-start md:items-center"
         action={submitAction}
@@ -40,8 +41,9 @@ export function UrlPreview(){
         <Button type="submit"
         className="bg-blue-500 hover:bg-blue-600 h-9 w-full md:w-fit text-white px-4 rounded-md cursor-pointer"
         >Salvar</Button>
-        {error && <p className="text-red-500">{error}</p>}
         </form>
+        {error && <p className="text-red-500">{error}</p>}
+        </div>
         </div>
     )
 }

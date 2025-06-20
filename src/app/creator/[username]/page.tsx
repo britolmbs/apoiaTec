@@ -9,7 +9,7 @@ export default async function Apoia ({
 
     return (
         <div className="min-h-[calc(100vh-64px)]">
-            <div className="w-full h-64-relative bg-black">
+            <div className="w-full h-64 relative bg-black">
                 <Image 
                 src={"https://github.com/britolmbs.png"}
                 alt="Banner"
@@ -23,6 +23,7 @@ export default async function Apoia ({
                 <div className="flex flex-col items-center">
                     <Image
                     src={"https://github.com/britolmbs.png"}
+                    className="w-36 h-36 rounded-xl bg-gray-50 hover:shadow-lg duration-300 select-none text-zinc-900 text-3xl flex items-center justify-center object-cover absolute -top-16 border-4 border-white"
                     alt="Lucas Brito"
                     width={96}
                     height={96}
@@ -45,7 +46,7 @@ export default async function Apoia ({
                 </section>
 
                 <section className="bg-gray-50 rounded-md p-5 h-fit mx-2">
-                    <h3 className="font-bold text-lg">
+                    <h3 className="font-semibold text-lg">
                         Apoie o Lucas Brito: 
                     </h3>
                 </section>

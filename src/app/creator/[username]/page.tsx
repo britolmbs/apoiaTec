@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getInfoUser } from "./_data-access/get-info-user";
 import { notFound } from "next/navigation";
+import { FormDonate } from "./_components/form";
 
 export default async function Apoia ({
     params,
@@ -56,6 +57,7 @@ export default async function Apoia ({
                     <h3 className="font-semibold text-lg">
                      {user.name ? `Doar para ${user.name}` : "Apoiar Criador"}
                     </h3>
+                    <FormDonate />
                 </section>
             </div>
         </div>

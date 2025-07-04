@@ -7,7 +7,7 @@ const createUsernameSchema = z.object({
     slug: z.string().min(1, 'Slug do creador obrigatorio'),
     name: z.string().min(1, 'O nome é obrigatorio'),
     message: z.string().min(5, "A mensagem é Obrigatoria"),
-    price: z.number().min(15, "Selecione um valor"),
+    price: z.number().min(1500, "Selecione um valor"),
     creatorId: z.string()
 })
 
@@ -20,6 +20,15 @@ export async function createPayment(data: CreatePaymentSchema) {
         return {
             data: null,
             error: schema.error.issues[0].message
+        }
+    }
+
+    try{
+
+    }catch(err) {
+        return {
+            data: null,
+            error: "Falha ao criar o pagamento"
         }
     }
 }

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
+import { createPayment } from "../_actions/create-payment"
 
 const formSchema = z.object({
     name: z.string().min(1, "O nome é obrigatório"),
@@ -20,7 +21,12 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>
 
-export function FormDonate() {
+interface FormDonateProps{
+    creatorId: string;
+    slug: string;
+}
+
+export function FormDonate({slug, creatorId }: FormDonateProps) {
 
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
@@ -31,8 +37,17 @@ export function FormDonate() {
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        
+    async function onSubmit(data: FormData) {
+
+        const princeIncents = Number(data.price) * 100;
+
+        const checkout = await createPayment({
+            name: data.name,
+            message: data.message,
+            creatorId: creatorId,
+            slug: slug,
+            price: princeIncents,
+        })
     }
 
     return (

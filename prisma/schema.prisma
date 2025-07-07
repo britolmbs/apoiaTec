@@ -43,6 +43,7 @@ model User {
   image         String?
   username      String? @unique
   bio           String?
+  connectedStripeAccountId String?
   accounts      Account[]
   sessions      Session[]
   // Optional for WebAuthn support

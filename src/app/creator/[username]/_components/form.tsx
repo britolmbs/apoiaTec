@@ -50,19 +50,29 @@ export function FormDonate({slug, creatorId }: FormDonateProps) {
             slug: slug,
             price: princeIncents,
         })
-        if(checkout.error){
+
+        await handlePaymentResponse(checkout)
+    }
+
+    async function handlePaymentResponse(checkout: { sessionId?: string, error?: string}) {
+             if(checkout.error){
             toast.error(checkout.error)
             return;
         }
-        if(checkout.data){
-            const data = JSON.parse(checkout.data)
+        if(!checkout.sessionId) {
+            toast.error('Falha ao criar o pagamento, tente mais tarde.');
+            return;
+            }
 
             const stripe = await getStripeJs();
-            await stripe?.redirectToCheckout({
-                sessionId: data.id as string
-            })
+            
+            if(!stripe){
+                toast.error("Falha ao criar o pagamento, tente mais tarde.")
+            }
 
-        }
+            await stripe?.redirectToCheckout({
+                sessionId: checkout.sessionId
+            })
     }
 
     return (

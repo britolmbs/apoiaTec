@@ -84,13 +84,11 @@ export async function createPayment(data: CreatePaymentSchema) {
         })
 
         return {
-            data: session.id,
-            error: null,
+            sessionId: session.id,
         }
 
     }catch(err) {
         return {
-            data: null,
             error: "Falha ao criar o pagamento, tente mais tarde"
         }
     }

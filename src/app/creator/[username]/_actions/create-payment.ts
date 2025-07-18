@@ -19,14 +19,12 @@ export async function createPayment(data: CreatePaymentSchema) {
 
     if(!schema.success) {
         return {
-            data: null,
             error: schema.error.issues[0].message
         }
     }
 
     if(!data.creatorId) {
         return {
-            data: null,
             error: 'Falha ao criar o pagamento, tente mais tarde'
         }
     }
@@ -39,7 +37,6 @@ export async function createPayment(data: CreatePaymentSchema) {
         })
         if(!creator) {
             return{
-                data: null,
                 error: "Falha ao criar o pagamento, tente mais tarde"
             }
         }
@@ -87,7 +84,7 @@ export async function createPayment(data: CreatePaymentSchema) {
         })
 
         return {
-            data: JSON.stringify(session),
+            data: session.id,
             error: null,
         }
 

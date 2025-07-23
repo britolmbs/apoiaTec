@@ -30,9 +30,11 @@ export default async function Dashboard() {
                 <CreateAccountButton />
             )}
             <Stats />
-
             <h2 className="text-2xl font-semibold mb-2">últimas doações</h2>
-            <DonationTable />
+            {session.user.connectedStripeAccountId &&(
+                <DonationTable />
+
+            )}
         </div>
     );
 }

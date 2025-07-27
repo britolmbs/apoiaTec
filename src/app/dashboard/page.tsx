@@ -29,7 +29,7 @@ export default async function Dashboard() {
             {!session.user.connectedStripeAccountId && (
                 <CreateAccountButton />
             )}
-            <Stats />
+            <Stats userId={session.user.id} stripeAccountId={session.user.connectedStripeAccountId ?? ''} />
             <h2 className="text-2xl font-semibold mb-2">últimas doações</h2>
             {session.user.connectedStripeAccountId &&(
                 <DonationTable />

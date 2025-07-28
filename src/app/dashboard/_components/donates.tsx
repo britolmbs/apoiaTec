@@ -1,17 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Donation } from "@/generated/prisma";
 import React from "react";
 
-const donations = [
-    {
-        id: "1",
-    donorName: "Lucas Brito",
-    donorMessage: "Adorei o trabalho",
-    amount: 500,
-    creatAt: new Date("2025-06-05T12:00:00Z"),
-},
-]
-export function DonationTable() {
+type DonationProp = Pick<Donation, "donorName" | 'donorMessage' | 'amount' | 'createdAt' | 'id'>
+
+interface DonationTableProps{
+    data: DonationProp[]
+}
+
+export function DonationTable({ data }: DonationTableProps) {
     return(
         <>
         <div className="hidden lg:block">
@@ -25,7 +23,7 @@ export function DonationTable() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {donations.map((donation) => (
+                    {data.map((donation) => (
                         <TableRow key={donation.id}>
                             <TableCell className="font-medium">{donation.donorName}</TableCell>
                             <TableCell className="max-w-72">{donation.donorMessage}</TableCell>
@@ -38,18 +36,18 @@ export function DonationTable() {
         </div>
 
         <div className="lg:hidden space-y-4">
-            {donations.map((donation) => (
-                <Card key={donation.id}>
+            {data.map((donation) => (
+                <Card key={data.id}>
                     <CardHeader>
-                        <CardTitle className="text-lg">{donation.donorName}</CardTitle>
+                        <CardTitle className="text-lg">{data.donorName}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-sm text-muted-foreground mb-2">{donation.donorMessage}</p>
+                        <p className="text-sm text-muted-foreground mb-2">{data.donorMessage}</p>
                         <div className="flex justify-between items-center">
                             <span className="text-gren-500 font-semibold">
-                                {donation.amount}
+                                {data.amount}
                             </span>
-                            <span className="text-sm text-muted-foreground">{donation.creatAt.toDateString()}</span>
+                            <span className="text-sm text-muted-foreground">{data.creatAt.toDateString()}</span>
                         </div>
                     </CardContent>
                 </Card>

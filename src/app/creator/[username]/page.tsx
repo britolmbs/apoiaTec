@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getInfoUser } from "./_data-access/get-info-user";
 import { notFound } from "next/navigation";
 import { FormDonate } from "./_components/form";
+import { CoverSection } from "./_components/cover-section";
 
 export default async function Apoia ({
     params,
@@ -16,7 +17,12 @@ export default async function Apoia ({
     }
 
     return (
-        <div className="min-h-[calc(100vh-64px)]">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+            <CoverSection 
+            coverImage={user?.image ?? ""}
+            profileImage={user?.image ?? ""}
+            name={user?.name ?? "Sem nome"}
+            />
             <div className="w-full h-64 relative bg-black">
                 <Image 
                 src={user.image ?? "https://github.com/britolmbs.png"}

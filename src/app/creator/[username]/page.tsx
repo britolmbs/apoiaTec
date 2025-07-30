@@ -23,49 +23,16 @@ export default async function Apoia ({
             profileImage={user?.image ?? ""}
             name={user?.name ?? "Sem nome"}
             />
-            <div className="w-full h-64 relative bg-black">
-                <Image 
-                src={user.image ?? "https://github.com/britolmbs.png"}
-                alt="Banner"
-                fill
-                className="object-cover opacity-50"
-                priority
-                quality={100}
-                />
-            </div>
-            <section className="flex flex-col w-full items-center justify-center mx-auto max-w-7xl p-4 relative">
-                <div className="flex flex-col items-center">
-                    <Image
-                    src={user.image ?? "https://github.com/britolmbs.png"}
-                    className="w-36 h-36 rounded-xl bg-gray-50 hover:shadow-lg duration-300 select-none text-zinc-900 text-3xl flex items-center justify-center object-cover absolute -top-16 border-4 border-white"
-                    alt="Lucas Brito"
-                    width={96}
-                    height={96}
-                    quality={100}
-                    />
-                    <h1 className="font-bold text-xl md:text-2x1 mt-20 mb-4">
-                       {user.name ?? "Sem nome" }
-                    </h1>
+
+            <main className="cointainer mx-auto max-w-6xl p-4 sm:p-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+                    <div></div>
+                    <div></div>
                 </div>
-            </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 w-full mx-auto gap-4 max-w-5xl">
-                <section className="flex flex-col bg-gray-50 p-5 rounded-md h-fit mx-2">
-                    <p className="font-semibold text-lg">
-                        Sobre {user.username ?? ""}
-                    </p>
-                    <p className="text-gray-500 mt-2">
-                       {user.bio ?? "Sem Biografia"}
-                    </p>
-                </section>
+            </main>
+           
 
-                <section className="bg-gray-50 rounded-md p-5 h-fit mx-2">
-                    <h3 className="font-semibold text-lg">
-                     {user.name ? `Doar para ${user.name}` : "Apoiar Criador"}
-                    </h3>
-                    <FormDonate slug={user.username!} creatorId={user.connectedStripeAccountId ?? ""} />
-                </section>
-            </div>
         </div>
     )
 }

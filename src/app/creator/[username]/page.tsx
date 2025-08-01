@@ -25,9 +25,11 @@ export default async function Apoia ({
             />
 
             <main className="cointainer mx-auto max-w-6xl p-4 sm:p-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-                    <div><AboutSection name={user?.name ?? "Sem nome"} description={user?.bio ?? ""} /></div>
-                    <div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 -mt-8 md:-mt-16 relative z-10">
+                    <div className="order-2 lg:order-1">
+                        <AboutSection name={user?.name ?? "Sem nome"} description={user?.bio ?? ""} />
+                        </div>
+                    <div className="order-1 lg:order-2">
                         <FormDonate 
                         slug={user.username!}
                         creatorId={user.connectedStripeAccountId ?? ""} />

@@ -20,7 +20,7 @@ export function CoverSection({ coverImage, name, profileImage }: ConverSectionPr
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent "></div>
 
-            <div className="absolute bottom-2 left-0 right-0 p-4">
+            <div className="absolute bottom-2 md:bottom-6 left-0 right-0 p-4 md:p-8">
                 <div className="container mx-auto max-w-6xl">
                     <div className="flex flex-col items-center sm:items-end gap-4 sm:flex-row sm:gap-6">
                         <div className="relative flex-shrink-0">

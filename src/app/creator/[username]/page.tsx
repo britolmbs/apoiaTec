@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { getInfoUser } from "./_data-access/get-info-user";
 import { notFound } from "next/navigation";
 import { FormDonate } from "./_components/form";
 import { CoverSection } from "./_components/cover-section";
+import { AboutSection } from "./_components/about-section";
 
 export default async function Apoia ({
     params,
@@ -26,8 +26,12 @@ export default async function Apoia ({
 
             <main className="cointainer mx-auto max-w-6xl p-4 sm:p-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-                    <div></div>
-                    <div></div>
+                    <div><AboutSection name={user?.name ?? "Sem nome"} description={user?.bio ?? ""} /></div>
+                    <div>
+                        <FormDonate 
+                        slug={user.username!}
+                        creatorId={user.connectedStripeAccountId ?? ""} />
+                    </div>
                 </div>
 
             </main>

@@ -29,7 +29,7 @@ export function DonationTable({ data }: DonationTableProps) {
                             <TableCell className="font-medium">{donation.donorName}</TableCell>
                             <TableCell className="max-w-72">{donation.donorMessage}</TableCell>
                             <TableCell className="text-center">{formatCurrency(donation.amount / 100)}</TableCell>
-                            <TableCell className="text-center">{donation.createdAt.toDateString()}</TableCell>
+                            <TableCell className="text-center">{formatDate(donation.createdAt)}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -46,7 +46,7 @@ export function DonationTable({ data }: DonationTableProps) {
                         <p className="text-sm text-muted-foreground mb-2">{donation.donorMessage}</p>
                         <div className="flex justify-between items-center">
                             <span className="text-gren-500 font-semibold">
-                                {donation.amount}
+                                {formatCurrency(donation.amount / 100)}
                             </span>
                             <span className="text-sm text-muted-foreground">{formatDate(donation.createdAt)}</span>
                         </div>

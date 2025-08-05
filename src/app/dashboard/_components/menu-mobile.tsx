@@ -5,9 +5,14 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { LogOut, Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { logout } from "../_actions/logout";
 
 export function MobileMenu() {
     const [open, setOpen] = useState(false)
+
+    async function handleSignout(){
+        await logout();
+    }
 
     return(
         <Sheet open={open} onOpenChange={setOpen}>
@@ -29,7 +34,9 @@ export function MobileMenu() {
                     </Link>
 
                     <Button variant="ghost"
-                    className="justify-start px-0 text-red-500 hover:text-red-600 hover:bg-transparent cursor-pointer">
+                    className="justify-start px-0 text-red-500 hover:text-red-600 hover:bg-transparent cursor-pointer"
+                    onClick={handleSignout}
+                    >
                         <LogOut className="mr-2 h-4 w-4" />
                         Sair
                     </Button>

@@ -15,13 +15,6 @@ try {
         orderBy:{
             createdAt: 'desc'
         },
-        select:{
-            id: true,
-            amount: true,
-            createdAt: true,
-            donorMessage: true,
-            donorName: true
-        }
     })
 
     return NextResponse.json({ data: donates })

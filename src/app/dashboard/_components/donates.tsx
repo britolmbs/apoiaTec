@@ -1,11 +1,35 @@
+"use client"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatCurrency, formatDate } from "@/utils/format";
 import React from "react";
+import {useQuery} from '@tanstack/react-query'
+import { Donation } from "@/generated/prisma";
+
+interface ResponseData{
+    data: Donation[]
+}
 
 
 
 export function DonationTable() {
+
+const { data } = useQuery({
+    queryKey:['get-donates'],
+    queryFn: async () => {
+        const url = `${process.env.NEXT_PUBLIC_HOST_URL}/api/donates`;
+        const response = await fetch(url);
+        const json = await response.json() as ResponseData;
+
+        if(!response.ok){
+            return [];
+        }
+
+        return json.data;
+    }
+})
+
     return(
         <>
         <div className="hidden lg:block">
@@ -19,7 +43,7 @@ export function DonationTable() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {data.map((donation) => (
+                    {data && data.map((donation) => (
                         <TableRow key={donation.id}>
                             <TableCell className="font-medium">{donation.donorName}</TableCell>
                             <TableCell className="max-w-72">{donation.donorMessage}</TableCell>
@@ -32,7 +56,7 @@ export function DonationTable() {
         </div>
 
         <div className="lg:hidden space-y-4">
-            {data.map((donation) => (
+            {data && data.map((donation) => (
                 <Card key={donation.id}>
                     <CardHeader>
                         <CardTitle className="text-lg">{donation.donorName}</CardTitle>

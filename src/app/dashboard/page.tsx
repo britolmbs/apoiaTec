@@ -15,7 +15,7 @@ export default async function Dashboard() {
     }
 
     const urlStripeDashboard = await getStripeDashboard(session.user?.connectedStripeAccountId)
-    const donates = await getAllDonates(session.user.id)
+    //const donates = await getAllDonates(session.user.id)
 
     return(
         <div className="p-4">
@@ -43,7 +43,7 @@ export default async function Dashboard() {
               />
               
             <h2 className="text-2xl font-semibold mb-2">últimas doações</h2>
-                <DonationTable data={donates.data} />
+                <DonationTable />
            </>
 
             )}

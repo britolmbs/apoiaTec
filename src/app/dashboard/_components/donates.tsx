@@ -1,16 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Donation } from "@/generated/prisma";
 import { formatCurrency, formatDate } from "@/utils/format";
 import React from "react";
 
-type DonationProp = Pick<Donation, "donorName" | "donorMessage" | "amount" | "createdAt" | "id">
 
-interface DonationTableProps{
-    data: DonationProp[]
-}
 
-export function DonationTable({ data }: DonationTableProps) {
+export function DonationTable() {
     return(
         <>
         <div className="hidden lg:block">

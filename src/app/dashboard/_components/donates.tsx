@@ -15,7 +15,7 @@ interface ResponseData{
 
 export function DonationTable() {
 
-const { data } = useQuery({
+const { data, isLoading } = useQuery({
     queryKey:['get-donates'],
     queryFn: async () => {
         const url = `${process.env.NEXT_PUBLIC_HOST_URL}/api/donates`;
@@ -27,8 +27,17 @@ const { data } = useQuery({
         }
 
         return json.data;
-    }
+    },
+    refetchInterval: 60000
 })
+
+    if (isLoading) {
+        return (
+            <div className="mt-5">
+                <p className="text-center text-gray-700">Carregando...</p>
+            </div>
+        )
+    }
 
     return(
         <>
